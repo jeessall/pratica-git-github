@@ -1,6 +1,143 @@
  meu-site && cd meu-site (está criando um novo diretorio=pasta)
+
  touch index.html(criando o arquivo dentro do diretório/pasta)
+
  git branch (criando uma branch/ramificação)
+  git checkout -b feature/contato # cria e entra na nova branch
+
  feature/contato (nome da branch)
+
  git checkout + nome da branch (muda para a branch contato)
+
  git branch (lista todas as branchs existentes)
+
+ git pull origin main (baixa todas as alterações da branch main do repositório remoto(origin) para o local e faz um merge junto mesclando todas as alterações de todas as branchs na main)
+
+ git push origin --delete hotfix/erro-tipografico
+ git branch -d hotfix/erro-tipografico(esses dois comando excluem a branch)
+
+ 
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git init
+Reinitialized existing Git repository in C:/Users/jessi/Desktop/senac/pratica-git-github/.git/
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ mkdir exercicio1 && cd index
+bash: cd: index: No such file or directory
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git init
+Reinitialized existing Git repository in C:/Users/jessi/Desktop/senac/pratica-git-github/.git/
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ touch index.html
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git init
+Reinitialized existing Git repository in C:/Users/jessi/Desktop/senac/pratica-git-github/.git/
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git add .
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git commit -m "Iniciando"
+[main 28c3ce7] Iniciando
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ delete mode 100644 criando-branch.html
+ create mode 100644 index.html
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git branch feature/contato
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git checkout feature/contato
+Switched to branch 'feature/contato'
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (feature/contato)
+$ git branch
+* feature/contato
+  main
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (feature/contato)
+$ git add .
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (feature/contato)
+$ git commit -m "Editar index e deletar branch localmente"
+[feature/contato 30e84a8] Editar index e deletar branch localmente
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (feature/contato)
+$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git merge feature/contato
+Updating 28c3ce7..30e84a8
+Fast-forward
+ index.html | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git branch -d feature/contato
+Deleted branch feature/contato (was 30e84a8).
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git remote add origin https://github.com/jeessall/pratica-git-github.git
+error: remote origin already exists.
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git push -u origin main
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 678 bytes | 678.00 KiB/s, done. 
+Total 6 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/jeessall/pratica-git-github.git        
+   865a325..30e84a8  main -> main
+branch 'main' set up to track 'origin/main'.
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git checkout -b hotfix/erro-tipografico
+Switched to a new branch 'hotfix/erro-tipografico'
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (hotfix/erro-tipografico)
+$ git add .
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (hotfix/erro-tipografico)
+$ git commit -m "Hotfix -corrigindo erro de digitação"
+[hotfix/erro-tipografico f52885c] Hotfix -corrigindo erro de digitação
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (hotfix/erro-tipografico)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git pull origin main
+From https://github.com/jeessall/pratica-git-github
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git branch -d hotfix/erro-tipografico
+error: the branch 'hotfix/erro-tipografico' is not fully merged
+hint: If you are sure you want to delete it, run 'git branch -D hotfix/erro-tipografico'
+hint: Disable this message with "git config advice.forceDeleteBranch false"
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git push origin main --delete hotfix/erro-tipografico
+error: unable to delete 'hotfix/erro-tipografico': remote ref does not exist
+error: failed to push some refs to 'https://github.com/jeessall/pratica-git-github.git'
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$ git push origin --delete hotfix/erro-tipografico
+error: unable to delete 'hotfix/erro-tipografico': remote ref does not exist
+error: failed to push some refs to 'https://github.com/jeessall/pratica-git-github.git'
+
+jessi@Jessica_note MINGW64 ~/Desktop/senac/pratica-git-github (main)
+$
